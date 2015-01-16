@@ -1,0 +1,20 @@
+<h1>Profile for <%= @user.name %></h1>
+
+<h3>....Posts.....</h3>
+
+<div class="posts">
+
+  <ul>
+    <% @user.posts.each do |post| %>
+    <li class="post">
+      <%= post.post %>
+      <br/>
+      On <%= post.created_at.strftime("%b %e, %l:%M %p") %>
+    </li>
+    <% end %>
+  </ul>
+
+</div>
+
+<%= link_to "HOME", sign_in_path %>
+<%= link_to "back", root_path %>
