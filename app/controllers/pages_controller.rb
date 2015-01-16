@@ -18,6 +18,15 @@ class PagesController < ApplicationController
       @followings.first.destroy
       redirect_to root_path, :flash => { :info => "The user was successfully unfollowed" }
     end
+  end
 
+  def new_post
+    @post = Post.new(params.require(:post).permit(:post))
+    @post.user = current_user
+    if @post.save
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 end
